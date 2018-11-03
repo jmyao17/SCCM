@@ -21,13 +21,29 @@ hwHO=hwHO${hw}
 Input=${Nucl}_magic_${eMax}.dat
 ValID=pf5g9
 
+#PATH_SM=/mnt/research/imsrg/jmyao/Int #/GCN2850
+#dir=${IntID}/${Hs}
+#export GCM_ME_FILES=${PATH_SM}/$dir
+
 me1b=SM_GCN2850_ME1B.dat #EOM_Ca48_chi2b3b_srg0625_eMax04_hwHO020_unnorm_ham_1b.dat
 me2b=SM_GCN2850_ME2B.dat #EOM_Ca48_chi2b3b_srg0625_eMax04_hwHO020_unnorm_ham_2b.dat
 
-PATH_WORK=./ 
+#me1b=Ca48_chi2b3b400_srg0625J_eMax04_lMax04_hwHO020_evolved_unnorm_ham_1b.dat
+#me2b=Ca48_chi2b3b400_srg0625J_eMax04_lMax04_hwHO020_evolved_unnorm_ham_2b.dat
+
+#PATH_WORK=/global/homes/j/jmyao/GCM_Solver/CPCv5/${HFBdir}
+#PATH_INT=/global/u2/j/jmyao/GCM_Solver/CPCv5/Int #/global/homes/j/jmyao/GCM_Solver/CPCv5/Int
+
+PATH_WORK=./ #/mnt/home/yaojiang/GCM/ABGCM/${HFBdir}
 PATH_INT=../${IntID}
 
 cd ${PATH_WORK}
+
+#cp ${GCM_ME_FILES}/${me1b} ${PATH_INT}/IMSRG_s000_SPE_${IntID}_${ValID}_${hwHO}.dat
+#cp ${GCM_ME_FILES}/${me2b} ${PATH_INT}/IMSRG_${Flow}_${IntID}_${ValID}_J.dat
+#cp ${GCM_ME_FILES}/${me2b} ${PATH_INT}/IMSRG_${Flow}_${IntID}_${ValID}_${hwHO}_J.dat
+
+#echo ${PATH_INT}/IMSRG_s000_SPE_${IntID}_${ValID}.dat
 
 cat <<EOF > chi2b3b.int 
 File4ME1B:    ${me1b}

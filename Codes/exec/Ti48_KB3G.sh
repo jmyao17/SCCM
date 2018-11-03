@@ -10,7 +10,7 @@ itemax=300
 ZZ=2 #32
 NN=6 #44
 Nucl=Ti48
-iwf=1           # 2 or 1
+iwf=2           # 2 or 1
 IntJT=0      # 0 (in M-shceme); 1 (J2M); 2 (J2JT2M) 
 Flow=s000 #s999
 IntID=KB3G #${flow} #chi23bCa48_srg0625
@@ -23,17 +23,15 @@ hwHO=hwHO${hw}
 Input=${Nucl}_magic_${eMax}.dat
 ValID=pf #pf5g9
 
-PATH_SM=/mnt/research/imsrg/jmyao/Int #/GCN2850
-dir=${IntID}/${Hs}
-export GCM_ME_FILES=${PATH_SM}/$dir
-
-me1b=SM_KB3G_ME1B.dat #EOM_Ca48_chi2b3b_srg0625_eMax04_hwHO020_unnorm_ham_1b.dat
+me1b=SM_KB3G_ME1B.dat 
 me2b=SM_KB3G_ME2B.dat
 
-PATH_WORK=/mnt/home/yaojiang/GCM/ABGCM/${HFBdir}
-PATH_INT=/mnt/home/yaojiang/GCM/ABGCM/Int
+PATH_WORK=./ 
+PATH_INT=../${IntID}
 
 cd ${PATH_WORK}
+
+
 
 #cp ${GCM_ME_FILES}/${me1b} ${PATH_INT}/IMSRG_s000_SPE_${IntID}_${ValID}_${hwHO}.dat
 #cp ${GCM_ME_FILES}/${me2b} ${PATH_INT}/IMSRG_${Flow}_${IntID}_${ValID}_J.dat
@@ -97,13 +95,16 @@ cat <<EOF > betgam.dat
  max
  bet     gam    P00(T=0,J=1)  crank.freq
  ----------------------------------------
- 1
+ 3
+ 0.0      0      0          0.0
+ 0.1      0      0          0.0
  0.2      0      0          0.0
- 0.2      0      0          0.2
- 0.2     20      0          0.0
 EOF
 
 #.... copy matrix elements from EOM-IMSRG calculation
 cd ${PATH_WORK}
 
-./HFB < hfb.dat 
+./HFB 
+
+cat fort.9* >>E_beta_gam.dat
+rm fort.*

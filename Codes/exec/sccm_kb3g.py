@@ -6,7 +6,7 @@ import sys, os, shutil
 from shutil import copyfile
 
 # path
-os.system("./set_path")
+os.system("source set_path.sh")
 
 # parameters
 
@@ -53,9 +53,9 @@ for filename in os.listdir(dir_dst):
 
 
 # run the code
-os.system("./HFB.sh")
+os.system("./Ti48_KB3G.sh")
 #os.system("./PNAMP.sh")
 #os.system("./GCM.sh")
 
-os.remove("fort.*")
+#os.remove("fort.*")
 

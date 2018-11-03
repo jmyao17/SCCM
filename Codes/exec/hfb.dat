@@ -4,41 +4,41 @@ KMix      1                             ! Triaxiality/K-mixture: 0 (w/o); 1(w/)
 IsHFB     1                             ! 0 (HF); 1(HFB)
 IntType   0                             ! 0: shell-model; 1: Chiral
 InME3B    0                             ! implicit ME3B: 0 (w/o); 1 (w/)
-IntID     GCN2850                      !
-ValID     pf5g9                        ! model space: emax0N 
-hw        10                            ! i2,frequency of HO 
+IntID     KB3G                      !
+ValID     pf                        ! model space: emax0N 
+hw        11                            ! i2,frequency of HO 
 COM       2                             ! Center-of-Mass Correction: 1 (1B); 2 (1B+2B) 
 FlowPars  s000                          ! s value
 Int-JT    0                      ! 0(m-scheme); 1(JTTz-scheme); 2 (J2JT-scheme): 3(From Nathan,J2JT)
 IntIMSRG  1                             ! IMSRG interation (1) or not (0)
 IsoSpin   0                             ! (0) Int. does not have isospin symmetry; (1) Int. has isospin symm.
-nprot     4                            ! neutron
-nneut     16                            ! proton
-Iter max  800                           ! No. of iteractions 
-Method    GD                             ! GD: gradient descent method; GDM(with mom.); ADAM
+nprot     2                            ! neutron
+nneut     6                            ! proton
+Iter max  300                           ! No. of iteractions 
+Method    GDM                             ! GD: gradient descent method; GDM(with mom.); ADAM
 eta1      7.e-3                         ! step size in gradient method
 tolcons   1.e-4
-tolgrad   1.e-5                         !  precision
+tolgrad   1.e-4                         !  precision
 INP_wf    2                        ! (0)read wf from fort.10; (1) read from saved file; (2) from a random wf
 PNP_phi   1                             !  1 (HFB) or 7 (VAPHFB)
 ........................................ constraint quantities
 kick_step 0.0
 B_G       1                            ! 0 (Q value); 1 (bet,gam)
-NCONS     7
+NCONS     6
 Q20t      1 0.d0                       ! 3: Q20 or beta
 Q22t      1 0.d0                       ! 4: Q22 or gamma
 Q21t      1 0.d0                       ! 5:
 Q20m      0 0.d0                       ! 6: Q20m or beta
-Q22m      0 0.d0                       ! 7: Q22m or gamma
-Q21m      0 0.d0                       ! 8
-JX        1 0.d0                       ! 9
-JY        1 0.d0                       ! 10
-JZ        1 0.d0                       ! 11
-P00_10    1 0.0d0                      ! 12  np isoscalar pairing ! T=0, L=0, J=S=1, MJ=0
-P1m1_00   0 0.d0                       ! 13  pp isovector pairing
-P1p1_00   0 0.d0                       ! 14  nn isovector pairing
-P10_00    0 0.d0                       ! 15  np isovector pairing
+Q22m      1 0.d0                       ! 7: Q22m or gamma
+Q21m      1 0.d0                       ! 8
+JX        0 0.0d0                      ! 9  ! equivalent to choose diff. crank freq.
+JY        0 0.d0                       ! 10
+JZ        0 0.d0                       ! 11
+P00_10    1 0.0d0                      ! 12  P_TMT_JMJ ! T=0, L=0, J=S=1, MJ=0
+P1m1_00   0 0.d0                       ! 13
+P1p1_00   0 0.d0                       ! 14
+P10_00    0 0.d0                       ! 15
 P00_1m1   0 0.0d0                      ! 16  P_TMT_JMJ ! T=0, L=0, J=S=1, MJ=-1
 P00_1p1   0 0.0d0                      ! 17  P_TMT_JMJ ! T=0, L=0, J=S=1, MJ=+1
-Q40t      0 0.d0                       ! 18: Q40 
-Q40m      0 0.d0                       ! 19: Q40 
+Q40t      0 0.d0                       ! 3: Q40t
+Q40m      0 0.d0                       ! 3: Q40m
