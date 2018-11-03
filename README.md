@@ -3,7 +3,7 @@
 <figure style="float:right">
     <img
     src="./data/sccm_log.jpg"
-    width="100"
+    width="300"
     alt="SCCM logo"
     align="right"
     /img>
