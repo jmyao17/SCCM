@@ -10,7 +10,7 @@ itemax=300
 ZZ=2 #32
 NN=6 #44
 Nucl=Ti48
-iwf=2           # 2 or 1
+iwf=1           # 2 or 1
 IntJT=0      # 0 (in M-shceme); 1 (J2M); 2 (J2JT2M) 
 Flow=s000 #s999
 IntID=KB3G #${flow} #chi23bCa48_srg0625
@@ -95,7 +95,7 @@ cat <<EOF > betgam.dat
  max
  bet     gam    P00(T=0,J=1)  crank.freq
  ----------------------------------------
- 3
+ 1
  0.0      0      0          0.0
  0.1      0      0          0.0
  0.2      0      0          0.0

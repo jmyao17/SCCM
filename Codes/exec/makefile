@@ -1,41 +1,46 @@
 # Makefile
 # OpenMPI
+
 export I_MPI_F90=ifort
 FC      = mpif90
-#FC      = ifort # PGI # ftn  # gfortran # mpif90
-FFLAGS = -O3 -g -w -mcmodel=medium -fopenmp #-fbounds-check #-openmp # -shared-intel -mcmodel=large #-qopenmp-report[=1]
-#FFLAGS = -O3 -g -w  #-shared-intel -mcmodel=large #medium -fopenmp
-LIB = -mkl #-llapack -lblas
+#FC      =ifort  #ifort # PGI # ftn  # gfortran # mpif90
+#FFLAGS = -O3 -w -openmp -shared-intel -mcmodel=medium #medium -fopenmp
+#FFLAGS = -O3 -g -w -debug -check bound -traceback #  -mcmodel=large #medium -fopenmp
+FFLAGS = -O3 -g -w -fopenmp -mcmodel=medium 
+LIB = -mkl # -llapack -lblas
 
-#LIB= -L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread
+#LIB= -L$(MKLROOT)/lib/intel64 -lmkl_sequential -lmkl_core -lpthread
 #MKLFLAGS= -I$(MKLROOT)/include
 # Full path for Fortran 90 Compiler
-#LIB =-llapack -lblas
-LOAD9  = GCM 
+#LIB = -llapack -lblas
+LOAD9  = HFB 
 
 MODULES = VAPHFB_Par.o  
 
-OBJECTS=VAPHFB_Par.f90 GCM_Main.f90 GCM_Read.f90 \
-	PNAMP_Default.f90 PNAMP_Base.f90 \
-	PNAMP_ME2B.f90 VAPHFB_Q2.f90 \
-	VAPHFB_ME1B.f90 PNAMP_ME1B.f90 GCM_1BDensityGS.f90 GCM_2BDensityGS.f90 GCM_3BDensityGS.f90 \
-	GCM_HNDiag.f90 \
- 	GCM_HWG.f90  
+OBJECTS    = HFBA_Main.f90 VAPHFB_Par.f90  \
+	     IMSRG_GenerateH_JTMT.f90 CHFB_IO.f90 HFBA_Base.f90 \
+	     VAPHFB_R2.f90 \
+	     CHFB_Field.f90 VAPHFB_ME1B.f90 VAPHFB_ME2B.f90 \
+	     VAPHFB_Proj.f90 VAPHFB_HFB_Densities.f90 VAPHFB_Lagrange.f90 \
+	     VAPHFB_HFB_Energy.f90 VAPHFB_HFB_H20.f90 MATH_Cholesky.f90
 
-LIB_Local= ../lib/GCM_IO.f90 ../lib/PNAMP_ME2B_Base.f90 ../lib/PNAMP_ME3B_Base.f90 ../lib/VAPHFB_ThreeJ.f90 \
-	../lib/GCM_Solve_general.f90 ../lib/GCM_Solve_triaxial.f90 ../lib/OBS_GCM_TransByTD.f90 ../lib/OBS_RME1B.f90 \
-	../lib/Shared_LIB.f90 ../lib/Shared_Filenames.f90 ../lib/GCM_Hamiltonian_general.f90 ../lib/GCM_Hamiltonian_triaxial.f90 \
-	../lib/OBS_GCM_Spectrum.f90 ../lib/OBS_GCM_TransByME.f90 ../lib/Density_TD1B.f90 ../lib/PNAMP_Prep.f90
+LIB_Local= ../lib/HFBA_Diag.f90 ../lib/HFBA_Prep.f90 ../lib/HFBA_Reader.f90 ../lib/VAPHFB_Constraint.f90 \
+	../lib/HFBA_Initwf.f90 ../lib/VAPHFB_Q4.f90 ../lib/VAPHFB_Obs.f90 \
+	../lib/HFBA_Iteration.f90 ../lib/MPI_Hamiltonian.f90 ../lib/VAPHFB_ThreeJ.f90 ../lib/VAPHFB_Q2.f90 ../lib/VAPHFB_Q3.f90 \
+	../lib/HFBA_MATH_LIB.f90 ../lib/Nathan_GenerateME1B4Q2.f90 ../lib/IMSRG_GenerateME1B_Nathan.f90 \
+	../lib/IMSRG_GenerateME2B_Nathan.f90 ../lib/IMSRG_GenerateH3B_JTMT.f90 ../lib/HFBA_Hamiltonian1B.f90 \
+	../lib/PATH_LIB.f90 ../lib/EOM_ME2B_J2M.f90 \
+	../lib/INT_ME2B_JT2M.f90 ../lib/INT_ME2B_J2JT.f90 ../lib/INT_ME2B_JT.f90 ../lib/INT_ME2B_J2M.f90 
 
 
 OBJ9 	= $(OBJECTS:.f90=.o) 
 
-$(LOAD9) : $(MODULES) $(OBJ9) $(LIB_Local)
+$(LOAD9) : $(MODULES) $(OBJ9) 
 	$(FC) $(OBJ9) $(LIB_Local) $(FFLAGS) -o $(LOAD9) $(LIB)
 
 
 $(OBJ9)  :
-	$(FC) $(FFLAGS) -c $(OBJECTS)  $(LIB_Local)
+	$(FC) $(FFLAGS) -c $(LIB_Local) $(OBJECTS)
 
 
 $(MODULES) : VAPHFB_Par.f90  
@@ -45,6 +50,6 @@ clean	:
 	/bin/rm -f *.o
 	/bin/rm -f *.mod
 
-rebuild	: clean GCM 
+rebuild	: clean HFB 
 
 

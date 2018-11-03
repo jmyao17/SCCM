@@ -41,12 +41,12 @@
       USE VAPHFB_PAR
       implicit none
       character*1 sign1,sign2
-      character*6 name0
+      character*11 name0
       real*8      p00,betat,gammat,ab2c1,cf
       integer     name_emax1,name_emax2,nuc1,nuc2,name1,name2,name3,&
      &            name4,name5,namep1,namep2,namep3,hw1,hw2,cf1,cf2,cf3
 !---------------------------
-              name0 = '../../'
+              name0 = '../../data/'
               if(betat.ge.0.d0) sign1='+'
               if(betat.lt.0.d0) sign1='-'
               ab2c1  = abs(betat)

@@ -19,7 +19,7 @@ Method    GDM                             ! GD: gradient descent method; GDM(wit
 eta1      7.e-3                         ! step size in gradient method
 tolcons   1.e-4
 tolgrad   1.e-4                         !  precision
-INP_wf    2                        ! (0)read wf from fort.10; (1) read from saved file; (2) from a random wf
+INP_wf    1                        ! (0)read wf from fort.10; (1) read from saved file; (2) from a random wf
 PNP_phi   1                             !  1 (HFB) or 7 (VAPHFB)
 ........................................ constraint quantities
 kick_step 0.0

@@ -10,9 +10,9 @@ os.system("source set_path.sh")
 
 # parameters
 
-Compiler=[False,False,False]
+#Compiler=[False,False,False]
 
-#Compiler=[True,False,False]
+Compiler=[True,False,False]
 
 #compile_hfb   = True #False
 compile_hfb,compile_pnamp,compile_gcm = Compiler

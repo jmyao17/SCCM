@@ -1,9 +1,9 @@
       subroutine Filename4collwf(NOQ)
       USE VAPHFB_PAR
       implicit real*8 (a-h,o-z)
-      character*6 cname0
+      character*11 cname0
 
-      cname0 = '../../'
+      cname0 = '../../data/'
       name_NOQ1  =mod(NOQ/10,10)+48
       name_NOQ2  =mod(NOQ,10)+48
       ihw1= mod(Input%ihwHO/10,10)+48
@@ -26,7 +26,7 @@
 !      implicit none
       INTEGER nuc1,nuc2,iq1,iq2,ihw1,ihw2
       character*1 sign1,sign2
-      character*6 cname0
+      character*11 cname0
 !---------------------------
               if(icase.eq.0) name   = 1+48
               if(icase.eq.1) name   = 3+48
@@ -38,7 +38,7 @@
               r2c2   = Const%P00_mesh(iq2)
               cf1    = Const%hw_mesh(iq1)
               cf2    = Const%hw_mesh(iq2)
-              cname0 = '../../'
+              cname0 = '../../data/'
               if(betac1.ge.0.d0) sign1='+'
               if(betac1.lt.0.d0) sign1='-'
               if(betac2.ge.0.d0) sign2='+'
@@ -209,12 +209,12 @@
       USE VAPHFB_PAR
       implicit none
       character*1 sign1,sign2
-      character*6 cname0
+      character*11 cname0
       real*8      betat,gammat,p00,ab2c1,cf
       integer     name_emax1,name_emax2,nuc1,nuc2,name1,name2,name3,&
      &            name4,name5,namep1,namep2,namep3,hw1,hw2,cf1,cf2,cf3
 !---------------------------
-              cname0 = '../../'
+              cname0 = '../../data/'
               if(betat.ge.0.d0) sign1='+'
               if(betat.lt.0.d0) sign1='-'
               ab2c1  = abs(betat)
