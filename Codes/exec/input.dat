@@ -1,0 +1,23 @@
+IntType   0                             ! 0: shell-model; 1: Chiral
+IsHFB     1                        ! 0 (HF); 1(HFB)
+IntID     GCN2850                     !magic18-20_srg0953            ! interaction
+ValID     pf5g9                        ! model space (sd), (pf), (pf5g9)
+hwHO      09                            ! frequency 
+FlowPars  s000                          ! s value
+nprot     4                            ! proton number of initial nucleus
+nneut     16                            ! neutron number of intial nucleus
+PNP       5                       ! PNP
+Nalp      1                       ! alp for AMP
+Nbet      16                       ! beta for AMP
+Ngam      1                       ! gam for AMP
+Jmax      6                             ! max J from AMP
+kmax      2                             ! kmax for a given J
+Idens     0                      ! 1(calc. GCM density); 0 (read from file)
+Rho3B     0                      ! 1 (with Rho3B ); 0 (without Rho3B)
+vs4me3b   pf5g9                                ! model space for Rho3B (sd), (pf), (pf5g9)
+cutoff    1.e-5                         ! cut off in norm
+J0k       1                               ! print out the w.f. of the k-th 0+ state 
+NOSJ0     0                               ! 0 (based on variance of E); otherwise choose the value 
+NOSJ2     0                               ! 
+NOSJ4     0                               ! 
+crank     0                               ! 1 (w/ cranking); 0 (w/o cranking)

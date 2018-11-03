@@ -1,0 +1,12 @@
+#............... Model Space (Attention to the order) ...........
+nlj t  n  l  twoj  (nlj is newly added)
+Neutron:
+1  0  0  3  5
+2  0  1  1  3
+3  0  1  1  1
+4  0  0  4  9
+Proton:
+1  1  0  3  5
+2  1  1  1  3
+3  1  1  1  1
+4  1  0  4  9
