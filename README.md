@@ -1,4 +1,3 @@
-# SCCM
 
 <figure style="float:right">
     <img
@@ -9,4 +8,10 @@
     /img>
 </figure>
 
+# SCCM
 Symmetry-Conserving-Configuration-Mixing Method for Nuclear Collective Excitations
+
+This repository includes:
+* source codes for HFB, Projection on angular momentum and particle numbers and configuration mixing calcualtions
+* some popular shell-model interactions
+* files for valence spaces
