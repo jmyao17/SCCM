@@ -21,7 +21,7 @@ How to download the code?
 * install <a href='https://git-scm.com/book/en/v2/Getting-Started-Installing-Git'>git</a>
 * git clone https://github.com/jmyao17/SCCM.git
 
-If you are not familar with git, here is nice git tutorial <a href='https://www.youtube.com/watch?v=mVnZVw4KJnc'>[YouTube]</a>.
+If you are not familar with git, here is a nice git tutorial <a href='https://www.youtube.com/watch?v=mVnZVw4KJnc'>[YouTube]</a>.
 
 How to use the code?
 * shell script file .sh or python script file is available for use
