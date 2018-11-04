@@ -7,7 +7,10 @@ FC      = mpif90
 #FFLAGS = -O3 -w -openmp -shared-intel -mcmodel=medium #medium -fopenmp
 #FFLAGS = -O3 -g -w -debug -check bound -traceback #  -mcmodel=large #medium -fopenmp
 FFLAGS = -O3 -g -w -fopenmp -mcmodel=medium 
+
 LIB = -mkl # -llapack -lblas
+
+#LIB= -L$(MKLROOT)/lib/intel64 -lmkl_sequential -lmkl_core -lpthread
 
 #LIB= -L$(MKLROOT)/lib/intel64 -lmkl_sequential -lmkl_core -lpthread
 #MKLFLAGS= -I$(MKLROOT)/include

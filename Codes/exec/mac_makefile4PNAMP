@@ -1,0 +1,57 @@
+# Makefile
+# OpenMPI
+export I_MPI_F90=ifort
+FC      = mpif90
+#FC      = ifort # PGI # ftn  # gfortran # mpif90
+#FFLAGS = -O3 -w -openmp -shared-intel -mcmodel=large -openmp
+FFLAGS = -O3 -g -w -mcmodel=medium -fopenmp #-fbounds-check #-openmp # -shared-intel -mcmodel=large #-qopenmp-report[=1]
+#FFLAGS = -O2 -qopenmp -shared-intel -mcmodel=medium
+#LIB = -mkl #-llapack -lblas
+#LIB = -lmkl_blacs -lfftw3xc_intel -lfftw2xc_intel -lmkl_blas95_lp64 -lmkl_core -lmkl_lapack95_lp64 -lmkl_scalapack_lp64 -lmkl_solver_lp64
+
+#LIB= -L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread
+#MKLFLAGS= -I$(MKLROOT)/include
+# Full path for Fortran 90 Compiler
+LIB = -llapack -lblas
+LOAD9  = PNAMP 
+
+MODULES = VAPHFB_Par.o  
+
+OBJECTS=VAPHFB_Par.f90 PNAMP_Main.f90 PNAMP_Prep.f90  \
+	PNAMP_Default.f90 PNAMP_Base.f90 IMSRG_GenerateH_JTMT.f90 \
+	PNAMP_ME2B_Base.f90 PNAMP_ME2B.f90 \
+	PNAMP_ME1B.f90 PNAMP_Canon.f90 PNAMP_Norm_np.f90 \
+	PNAMP_IO.f90 PNAMP_Rho1B.f90 PNAMP_Rho2B.f90 PNAMP_Rho3B.f90 \
+	PNAMP_HFB_Energy.f90 PNAMP_Energy_OpenMP.f90 \
+	test.f90 PNAMP_Onishi.f90 PNAMP_Neergard.f90 PNAMP_Proj.f90  
+
+
+LIB_Local=${sccm_lib}/PNAMP_Kernel3D_cranking.f90 ${sccm_lib}/PNAMP_Kernel3D_triaxial.f90 \
+ 	  ${sccm_lib}/PNAMP_Gaus.f90 ${sccm_lib}/PNAMP_Kernel1D.f90 ${sccm_lib}/Shared_LIB.f90 \
+	  ${sccm_lib}/PNAMP_Kernel3D_general.f90 ${sccm_lib}/VAPHFB_ThreeJ.f90 ${sccm_lib}/PNAMP_Read.f90 \
+	 ${sccm_lib}/VAPHFB_HFB_Field.f90 ${sccm_lib}/IMSRG_GenerateME1B_Nathan.f90 \
+	${sccm_lib}/ME1B.f90 ${sccm_lib}/Nathan_GenerateME1B4Q2.f90 \
+	${sccm_lib}/VAPHFB_Q2.f90 ${sccm_lib}/IMSRG_GenerateME2B_Nathan.f90 \
+	${sccm_lib}/Shared_Filenames.f90 ${sccm_lib}/IMSRG_GenerateH3B_JTMT.f90 \
+	${sccm_lib}/HFBA_Hamiltonian1B.f90 ${sccm_lib}/MPI_Hamiltonian.f90 ${sccm_lib}/EOM_ME2B_J2M.f90 \
+	${sccm_lib}/INT_ME2B_JT2M.f90 ${sccm_lib}/INT_ME2B_J2JT.f90 ${sccm_lib}/INT_ME2B_JT.f90 ${sccm_lib}/INT_ME2B_J2M.f90 \
+	${sccm_lib}/PNAMP_ME3B_Base.f90 ${sccm_lib}/PATH_LIB.f90 ${sccm_lib}/HFBA_Initwf18.f90 \
+	${sccm_lib}/PNAMP_TD1B.f90
+
+
+OBJ9    = $(OBJECTS:.f90=.o)
+
+$(LOAD9) : $(MODULES) $(OBJ9) $(LIB_Local)
+	$(FC) $(LIB_Local) $(OBJ9) $(FFLAGS) -o $(LOAD9) $(LIB)
+$(OBJ9)  :
+	$(FC) $(FFLAGS) -c $(OBJECTS) $(LIB_Local)
+
+$(MODULES) : VAPHFB_Par.f90  
+	$(FC) $(FFLAGS) -c VAPHFB_Par.f90 
+
+clean	:
+	/bin/rm -f *.o
+	/bin/rm -f *.mod
+
+rebuild	: clean PNAMP 
+

@@ -1,0 +1,53 @@
+# Makefile
+# OpenMPI
+export I_MPI_F90=ifort
+FC      = mpif90
+#FC      = ifort # PGI # ftn  # gfortran # mpif90
+FFLAGS = -O3 -g -w -mcmodel=medium -fopenmp #-fbounds-check #-openmp # -shared-intel -mcmodel=large #-qopenmp-report[=1]
+#FFLAGS = -O3 -g -w  #-shared-intel -mcmodel=large #medium -fopenmp
+#LIB = -mkl #-llapack -lblas
+#LIB= -L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread
+#MKLFLAGS= -I$(MKLROOT)/include
+# Full path for Fortran 90 Compiler
+LIB =-llapack -lblas
+LOAD9  = GCM 
+
+MODULES = VAPHFB_Par.o  
+
+OBJECTS=VAPHFB_Par.f90 GCM_Main.f90 GCM_Read.f90 \
+	PNAMP_Default.f90 PNAMP_Base.f90 \
+	PNAMP_ME2B.f90 VAPHFB_Q2.f90 \
+	VAPHFB_ME1B.f90 PNAMP_ME1B.f90 GCM_1BDensityGS.f90 GCM_2BDensityGS.f90 GCM_3BDensityGS.f90 \
+	GCM_HNDiag.f90 \
+ 	GCM_HWG.f90  
+
+LIB_Local= ${sccm_lib}/GCM_IO.f90 ${sccm_lib}/PNAMP_ME2B_Base.f90 ${sccm_lib}/PNAMP_ME3B_Base.f90 \
+ 	 ${sccm_lib}/GCM_Solve_general.f90 ${sccm_lib}/GCM_Solve_triaxial.f90 ${sccm_lib}/OBS_GCM_TransByTD.f90 \
+	 ${sccm_lib}/OBS_RME1B.f90 \
+	 ${sccm_lib}/Shared_LIB.f90 ${sccm_lib}/Shared_Filenames.f90 ${sccm_lib}/GCM_Hamiltonian_general.f90 \
+	 ${sccm_lib}/GCM_Hamiltonian_triaxial.f90 \
+	 ${sccm_lib}/OBS_GCM_Spectrum.f90 ${sccm_lib}/OBS_GCM_TransByME.f90 ${sccm_lib}/Density_TD1B.f90 \
+	 ${sccm_lib}/PNAMP_Prep.f90
+
+
+	 #${sccm_lib}/VAPHFB_ThreeJ.f90 \
+OBJ9 	= $(OBJECTS:.f90=.o) 
+
+$(LOAD9) : $(MODULES) $(OBJ9) $(LIB_Local)
+	$(FC) $(OBJ9) $(LIB_Local) $(FFLAGS) -o $(LOAD9) $(LIB)
+
+
+$(OBJ9)  :
+	$(FC) $(FFLAGS) -c $(OBJECTS)  $(LIB_Local)
+
+
+$(MODULES) : VAPHFB_Par.f90  
+	$(FC) $(FFLAGS) -c VAPHFB_Par.f90 
+
+clean	:
+	/bin/rm -f *.o
+	/bin/rm -f *.mod
+
+rebuild	: clean GCM 
+
+

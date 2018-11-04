@@ -181,7 +181,7 @@
 
 
 !     .......... CG coefficient
-      real*8, dimension(:,:,:,:,:,:), allocatable :: CG_Save
+!      real*8, dimension(:,:,:,:,:,:), allocatable :: CG_Save
 !     ................. basis for two-particle
       INTEGER, PARAMETER :: aMaxMax=800 !1000
       INTEGER, PARAMETER :: bMax=100 ! 100 !150
