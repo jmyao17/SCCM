@@ -35,8 +35,8 @@
 
        if(rank.eq.0) then
          open(82,file='E_beta_gam.dat',status='unknown')
-         write(82,'(a2,9A8,5A10)') '','epsi','cf','bet2n','bet2p', 'bet2t',&
-        'gam2n','gam2p','gam2t',"P_00",'EP_NN','EP_PP','EP_NP','Etot'
+         write(82,'(a2,9A8,6A10)') '','epsi','cf','bet2n','bet2p', 'bet2t',&
+        'gam2n','gam2p','gam2t',"P_00",'EP_NN','EP_PP','EP_NP','Etot','Radius'
        endif
 
        if(rank.eq.0) call Reader(.true.)

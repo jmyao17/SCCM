@@ -27,6 +27,9 @@ How to use the code?
 
 More details about the features and variables of the code will be published somewhere.
 
+To be implemented ...
+* lib directory is not included yet
+
 MIT License
 
 Copyright (c) 2018 Jiangming Yao

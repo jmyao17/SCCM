@@ -26,17 +26,17 @@ OBJECTS=VAPHFB_Par.f90 PNAMP_Main.f90 PNAMP_Prep.f90  \
 	test.f90 PNAMP_Onishi.f90 PNAMP_Neergard.f90 PNAMP_Proj.f90  
 
 
-LIB_Local=../lib/PNAMP_Kernel3D_cranking.f90 ../lib/PNAMP_Kernel3D_triaxial.f90 \
-	../lib/PNAMP_Gaus.f90 ../lib/PNAMP_Kernel1D.f90 ../lib/Shared_LIB.f90 \
-	../lib/PNAMP_Kernel3D_general.f90 ../lib/VAPHFB_ThreeJ.f90 ../lib/PNAMP_Read.f90 \
-	 ../lib/VAPHFB_HFB_Field.f90 ../lib/IMSRG_GenerateME1B_Nathan.f90 \
-	../lib/ME1B.f90 ../lib/Nathan_GenerateME1B4Q2.f90 \
-	../lib/VAPHFB_Q2.f90 ../lib/IMSRG_GenerateME2B_Nathan.f90 \
-	../lib/Shared_Filenames.f90 ../lib/IMSRG_GenerateH3B_JTMT.f90 \
-	../lib/HFBA_Hamiltonian1B.f90 ../lib/MPI_Hamiltonian.f90 ../lib/EOM_ME2B_J2M.f90 \
-	../lib/INT_ME2B_JT2M.f90 ../lib/INT_ME2B_J2JT.f90 ../lib/INT_ME2B_JT.f90 ../lib/INT_ME2B_J2M.f90 \
-	 ../lib/PNAMP_ME3B_Base.f90 ../lib/PATH_LIB.f90 ../lib/HFBA_Initwf18.f90 \
-	../lib/PNAMP_TD1B.f90
+LIB_Local=${sccm_lib}/PNAMP_Kernel3D_cranking.f90 ${sccm_lib}/PNAMP_Kernel3D_triaxial.f90 \
+ 	  ${sccm_lib}/PNAMP_Gaus.f90 ${sccm_lib}/PNAMP_Kernel1D.f90 ${sccm_lib}/Shared_LIB.f90 \
+	  ${sccm_lib}/PNAMP_Kernel3D_general.f90 ${sccm_lib}/VAPHFB_ThreeJ.f90 ${sccm_lib}/PNAMP_Read.f90 \
+	 ${sccm_lib}/VAPHFB_HFB_Field.f90 ${sccm_lib}/IMSRG_GenerateME1B_Nathan.f90 \
+	${sccm_lib}/ME1B.f90 ${sccm_lib}/Nathan_GenerateME1B4Q2.f90 \
+	${sccm_lib}/VAPHFB_Q2.f90 ${sccm_lib}/IMSRG_GenerateME2B_Nathan.f90 \
+	${sccm_lib}/Shared_Filenames.f90 ${sccm_lib}/IMSRG_GenerateH3B_JTMT.f90 \
+	${sccm_lib}/HFBA_Hamiltonian1B.f90 ${sccm_lib}/MPI_Hamiltonian.f90 ${sccm_lib}/EOM_ME2B_J2M.f90 \
+	${sccm_lib}/INT_ME2B_JT2M.f90 ${sccm_lib}/INT_ME2B_J2JT.f90 ${sccm_lib}/INT_ME2B_JT.f90 ${sccm_lib}/INT_ME2B_J2M.f90 \
+	${sccm_lib}/PNAMP_ME3B_Base.f90 ${sccm_lib}/PATH_LIB.f90 ${sccm_lib}/HFBA_Initwf18.f90 \
+	${sccm_lib}/PNAMP_TD1B.f90
 
 
 OBJ9    = $(OBJECTS:.f90=.o)

@@ -15,6 +15,8 @@ LIB = -mkl # -llapack -lblas
 #LIB = -llapack -lblas
 LOAD9  = HFB 
 
+
+
 MODULES = VAPHFB_Par.o  
 
 OBJECTS    = HFBA_Main.f90 VAPHFB_Par.f90  \
@@ -24,13 +26,15 @@ OBJECTS    = HFBA_Main.f90 VAPHFB_Par.f90  \
 	     VAPHFB_Proj.f90 VAPHFB_HFB_Densities.f90 VAPHFB_Lagrange.f90 \
 	     VAPHFB_HFB_Energy.f90 VAPHFB_HFB_H20.f90 MATH_Cholesky.f90
 
-LIB_Local= ../lib/HFBA_Diag.f90 ../lib/HFBA_Prep.f90 ../lib/HFBA_Reader.f90 ../lib/VAPHFB_Constraint.f90 \
-	../lib/HFBA_Initwf.f90 ../lib/VAPHFB_Q4.f90 ../lib/VAPHFB_Obs.f90 \
-	../lib/HFBA_Iteration.f90 ../lib/MPI_Hamiltonian.f90 ../lib/VAPHFB_ThreeJ.f90 ../lib/VAPHFB_Q2.f90 ../lib/VAPHFB_Q3.f90 \
-	../lib/HFBA_MATH_LIB.f90 ../lib/Nathan_GenerateME1B4Q2.f90 ../lib/IMSRG_GenerateME1B_Nathan.f90 \
-	../lib/IMSRG_GenerateME2B_Nathan.f90 ../lib/IMSRG_GenerateH3B_JTMT.f90 ../lib/HFBA_Hamiltonian1B.f90 \
-	../lib/PATH_LIB.f90 ../lib/EOM_ME2B_J2M.f90 \
-	../lib/INT_ME2B_JT2M.f90 ../lib/INT_ME2B_J2JT.f90 ../lib/INT_ME2B_JT.f90 ../lib/INT_ME2B_J2M.f90 
+LIB_Local= ${sccm_lib}/HFBA_Diag.f90 ${sccm_lib}/HFBA_Prep.f90 ${sccm_lib}/HFBA_Reader.f90 \
+	   ${sccm_lib}/VAPHFB_Constraint.f90 ${sccm_lib}/HFBA_Initwf.f90 ${sccm_lib}/VAPHFB_Q4.f90 \
+	   ${sccm_lib}/VAPHFB_Obs.f90 ${sccm_lib}/HFBA_Iteration.f90 ${sccm_lib}/MPI_Hamiltonian.f90 \
+	   ${sccm_lib}/VAPHFB_ThreeJ.f90 ${sccm_lib}/VAPHFB_Q2.f90 ${sccm_lib}/VAPHFB_Q3.f90 \
+	   ${sccm_lib}/HFBA_MATH_LIB.f90 ${sccm_lib}/Nathan_GenerateME1B4Q2.f90 ${sccm_lib}/IMSRG_GenerateME1B_Nathan.f90 \
+	   ${sccm_lib}/IMSRG_GenerateME2B_Nathan.f90 ${sccm_lib}/IMSRG_GenerateH3B_JTMT.f90 ${sccm_lib}/HFBA_Hamiltonian1B.f90 \
+	   ${sccm_lib}/PATH_LIB.f90 ${sccm_lib}/EOM_ME2B_J2M.f90 \
+	   ${sccm_lib}/INT_ME2B_JT2M.f90 ${sccm_lib}/INT_ME2B_J2JT.f90 ${sccm_lib}/INT_ME2B_JT.f90 \
+   	   ${sccm_lib}/INT_ME2B_J2M.f90 
 
 
 OBJ9 	= $(OBJECTS:.f90=.o) 

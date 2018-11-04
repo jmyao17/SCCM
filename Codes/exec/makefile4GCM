@@ -22,10 +22,14 @@ OBJECTS=VAPHFB_Par.f90 GCM_Main.f90 GCM_Read.f90 \
 	GCM_HNDiag.f90 \
  	GCM_HWG.f90  
 
-LIB_Local= ../lib/GCM_IO.f90 ../lib/PNAMP_ME2B_Base.f90 ../lib/PNAMP_ME3B_Base.f90 ../lib/VAPHFB_ThreeJ.f90 \
-	../lib/GCM_Solve_general.f90 ../lib/GCM_Solve_triaxial.f90 ../lib/OBS_GCM_TransByTD.f90 ../lib/OBS_RME1B.f90 \
-	../lib/Shared_LIB.f90 ../lib/Shared_Filenames.f90 ../lib/GCM_Hamiltonian_general.f90 ../lib/GCM_Hamiltonian_triaxial.f90 \
-	../lib/OBS_GCM_Spectrum.f90 ../lib/OBS_GCM_TransByME.f90 ../lib/Density_TD1B.f90 ../lib/PNAMP_Prep.f90
+LIB_Local= ${sccm_lib}/GCM_IO.f90 ${sccm_lib}/PNAMP_ME2B_Base.f90 ${sccm_lib}/PNAMP_ME3B_Base.f90 \
+	 ${sccm_lib}/VAPHFB_ThreeJ.f90 \
+ 	 ${sccm_lib}/GCM_Solve_general.f90 ${sccm_lib}/GCM_Solve_triaxial.f90 ${sccm_lib}/OBS_GCM_TransByTD.f90 \
+	 ${sccm_lib}/OBS_RME1B.f90 \
+	 ${sccm_lib}/Shared_LIB.f90 ${sccm_lib}/Shared_Filenames.f90 ${sccm_lib}/GCM_Hamiltonian_general.f90 \
+	 ${sccm_lib}/GCM_Hamiltonian_triaxial.f90 \
+	 ${sccm_lib}/OBS_GCM_Spectrum.f90 ${sccm_lib}/OBS_GCM_TransByME.f90 ${sccm_lib}/Density_TD1B.f90 \
+	 ${sccm_lib}/PNAMP_Prep.f90
 
 
 OBJ9 	= $(OBJECTS:.f90=.o) 

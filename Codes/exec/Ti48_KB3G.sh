@@ -95,10 +95,15 @@ cat <<EOF > betgam.dat
  max
  bet     gam    P00(T=0,J=1)  crank.freq
  ----------------------------------------
- 1
+ 8
+-0.3      0      0          0.0
+-0.2      0      0          0.0
+-0.1      0      0          0.0
  0.0      0      0          0.0
  0.1      0      0          0.0
  0.2      0      0          0.0
+ 0.3      0      0          0.0
+ 0.4      0      0          0.0
 EOF
 
 #.... copy matrix elements from EOM-IMSRG calculation
@@ -108,3 +113,4 @@ cd ${PATH_WORK}
 
 cat fort.9* >>E_beta_gam.dat
 rm fort.*
+mv E_beta_gam.dat ../../data/Ti/Ti48_EHFB.dat
