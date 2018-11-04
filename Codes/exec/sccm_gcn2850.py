@@ -6,19 +6,20 @@ import sys, os, shutil
 from shutil import copyfile
 
 # path
-os.system("./set_path")
+os.system("source set_path.sh")
+dir_dst="./"
 
-# parameters
-
-Compiler=[False,False,False]
-
-#Compiler=[True,False,False]
+# Options
+OPT1 = [True,True,True]
+OPT2 = [True,True,False]
+OPT3 = [True,False,False]
+OPT4 = [False,False,False]
 
 #compile_hfb   = True #False
-compile_hfb,compile_pnamp,compile_gcm = Compiler
+compile_hfb,compile_pnamp,compile_gcm =OPT4 
 
-# set path
-dir_dst="./"
+# parameters
+run_hfb,run_pnamp,run_gcm = OPT3
 
 # copy source *.f90 files for compiling
 if compile_hfb:
@@ -53,9 +54,12 @@ for filename in os.listdir(dir_dst):
 
 
 # run the code
-os.system("./HFB.sh")
-#os.system("./PNAMP.sh")
-#os.system("./GCM.sh")
+if run_hfb:
+    os.system("./Ge76_GCN2850.sh")
+if run_pnamp:
+    os.system("./PNAMP.sh")
+if run_gcm:
+    os.system("./GCM.sh")
 
-os.remove("fort.*")
+#os.remove("fort.*")
 

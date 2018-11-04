@@ -9,8 +9,8 @@ hw=10
 ZZ=4 #32
 NN=16 #44
 Nucl=Ge76
-iwf=2           # 2 or 1
-IntJT=0      # 0 (in M-shceme) or 1(J->M) or 2->1(J->JTMT->M) 
+iwf=1           # 2 or 1
+IntJT=1      # 0 (in M-shceme) or 1(J->M) or 2->1(J->JTMT->M) 
 Flow=s000 #s999
 IntID=GCN2850 #${flow} #chi23bCa48_srg0625
 Hs=H0
@@ -25,8 +25,6 @@ me1b=SM_GCN2850_ME1B.dat #EOM_Ca48_chi2b3b_srg0625_eMax04_hwHO020_unnorm_ham_1b.
 me2b=SM_GCN2850_ME2B.dat #EOM_Ca48_chi2b3b_srg0625_eMax04_hwHO020_unnorm_ham_2b.dat
 
 PATH_WORK=./ 
-PATH_INT=../${IntID}
-
 cd ${PATH_WORK}
 
 cat <<EOF > chi2b3b.int 
@@ -87,6 +85,7 @@ cd ${PATH_WORK}
 
 ./HFB
 
-#mpirun -n 1 ./HFB #>Ge76_MF_out
-  
-#mpirun -n ${nq} ./HFB  
+cat fort.9* >>E_beta_gam.dat
+rm fort.*
+mv E_beta_gam.dat ../../data/Ge/Ge76_EHFB.dat
+

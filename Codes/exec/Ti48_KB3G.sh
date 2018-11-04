@@ -27,16 +27,8 @@ me1b=SM_KB3G_ME1B.dat
 me2b=SM_KB3G_ME2B.dat
 
 PATH_WORK=./ 
-PATH_INT=../${IntID}
 
 cd ${PATH_WORK}
-
-
-
-#cp ${GCM_ME_FILES}/${me1b} ${PATH_INT}/IMSRG_s000_SPE_${IntID}_${ValID}_${hwHO}.dat
-#cp ${GCM_ME_FILES}/${me2b} ${PATH_INT}/IMSRG_${Flow}_${IntID}_${ValID}_J.dat
-#cp ${GCM_ME_FILES}/${me2b} ${PATH_INT}/IMSRG_${Flow}_${IntID}_${ValID}_${hwHO}_J.dat
-
 
 cat <<EOF > chi2b3b.int 
 File4ME1B:    ${me1b}
