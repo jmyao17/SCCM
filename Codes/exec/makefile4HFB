@@ -36,7 +36,7 @@ LIB_Local= ${sccm_lib}/HFBA_Diag.f90 ${sccm_lib}/HFBA_Prep.f90 ${sccm_lib}/HFBA_
 	   ${sccm_lib}/HFBA_MATH_LIB.f90 ${sccm_lib}/Nathan_GenerateME1B4Q2.f90 ${sccm_lib}/IMSRG_GenerateME1B_Nathan.f90 \
 	   ${sccm_lib}/IMSRG_GenerateME2B_Nathan.f90 ${sccm_lib}/IMSRG_GenerateH3B_JTMT.f90 ${sccm_lib}/HFBA_Hamiltonian1B.f90 \
 	   ${sccm_lib}/PATH_LIB.f90 ${sccm_lib}/EOM_ME2B_J2M.f90 \
-	   ${sccm_lib}/INT_ME2B_JT2M.f90 ${sccm_lib}/INT_ME2B_J2JT.f90 ${sccm_lib}/INT_ME2B_JT.f90 \
+	   ${sccm_lib}/INT_ME2B_JTMT2M.f90  ${sccm_lib}/INT_ME2B_JT2M.f90 ${sccm_lib}/INT_ME2B_J2JT.f90 ${sccm_lib}/INT_ME2B_JT.f90 \
    	   ${sccm_lib}/INT_ME2B_J2M.f90 
 
 

@@ -23,7 +23,7 @@ OBJECTS=VAPHFB_Par.f90 GCM_Main.f90 GCM_Read.f90 \
 
 LIB_Local= ${sccm_lib}/GCM_IO.f90 ${sccm_lib}/PNAMP_ME2B_Base.f90 ${sccm_lib}/PNAMP_ME3B_Base.f90 \
  	 ${sccm_lib}/GCM_Solve_general.f90 ${sccm_lib}/GCM_Solve_triaxial.f90 ${sccm_lib}/OBS_GCM_TransByTD.f90 \
-	 ${sccm_lib}/OBS_RME1B.f90 \
+	 ${sccm_lib}/CG_ThreeJ.f90 ${sccm_lib}/OBS_RME1B.f90 \
 	 ${sccm_lib}/Shared_LIB.f90 ${sccm_lib}/Shared_Filenames.f90 ${sccm_lib}/GCM_Hamiltonian_general.f90 \
 	 ${sccm_lib}/GCM_Hamiltonian_triaxial.f90 \
 	 ${sccm_lib}/OBS_GCM_Spectrum.f90 ${sccm_lib}/OBS_GCM_TransByME.f90 ${sccm_lib}/Density_TD1B.f90 \

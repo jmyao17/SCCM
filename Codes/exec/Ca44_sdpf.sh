@@ -1,25 +1,62 @@
+#!/bin/bash
+#PBS -l walltime=20:00:00
+#PBS -l nodes=5:ppn=1,walltime=28:50:00,mem=20gb      ###nodes:ppn - how many nodes & cores per node (ppn)
+#PBS -N Ca44-N8
+#PBS -o Ca44-N8
+
+# ........................ script for HFB calculation
+N=4
+itemax=1300
+ZZ=12 #32
+NN=16 #44
+Nucl=Ca44
+iwf=1           # 2 or 1
+IntJT=4      # 0 (in M-shceme); 1 (J2M); 3 (J2JT2M); 4 (JT2M) 
+Flow=s000 #s999
+IntID=SDPFMU #${flow} #chi23bCa48_srg0625
+Hs=H0
+hw=11
+eMax=eMax0${N}
+lMax=lMax0${N}
+hwHO=hwHO${hw}
+Input=${Nucl}_magic_${eMax}.dat
+ValID=sdpf #pf5g9
+
+me1b=SM_SDPFMU_ME1B.dat 
+me2b=SM_SDPFMU_ME2B.dat
+
+PATH_WORK=./ 
+
+cd ${PATH_WORK}
+
+cat <<EOF > chi2b3b.int 
+File4ME1B:    ${me1b}
+File4ME2B:    ${me2b} 
+EOF
+
+cat <<EOF > hfb.dat 
 NP-Mix    1                             ! np mixture: 0 (w/o); 1(w/)
 IP-Mix    0                             ! parity mixture: 0 (w/o); 1(w/)
 KMix      1                             ! Triaxiality/K-mixture: 0 (w/o); 1(w/)
 IsHFB     1                             ! 0 (HF); 1(HFB)
 IntType   0                             ! 0: shell-model; 1: Chiral
 InME3B    0                             ! implicit ME3B: 0 (w/o); 1 (w/)
-IntID     SDPFMU                      !
-ValID     sdpf                        ! model space: emax0N 
-hw        11                            ! i2,frequency of HO 
+IntID     ${IntID}                      !
+ValID     ${ValID}                        ! model space: emax0N 
+hw        ${hw}                            ! i2,frequency of HO 
 COM       2                             ! Center-of-Mass Correction: 1 (1B); 2 (1B+2B) 
-FlowPars  s000                          ! s value
-Int-JT    4                      ! 0(m-scheme); 1(JTTz-scheme); 2 (J2JT-scheme): 3(From Nathan,J2JT)
+FlowPars  ${Flow}                          ! s value
+Int-JT    ${IntJT}                      ! 0(m-scheme); 1(JTTz-scheme); 2 (J2JT-scheme): 3(From Nathan,J2JT)
 IntIMSRG  1                             ! IMSRG interation (1) or not (0)
 IsoSpin   0                             ! (0) Int. does not have isospin symmetry; (1) Int. has isospin symm.
-nprot     12                            ! neutron
-nneut     16                            ! proton
-Iter max  1300                           ! No. of iteractions 
+nprot     ${ZZ}                            ! neutron
+nneut     ${NN}                            ! proton
+Iter max  ${itemax}                           ! No. of iteractions 
 Method    GDM                              ! GD: gradient descent method; GDM(with mom.); ADAM
 eta1      1.e-3                         ! step size in gradient method
 tolcons   1.e-4
 tolgrad   1.e-4                         !  precision
-INP_wf    1                        ! (0)read wf from fort.10; (1) read from saved file; (2) from a random wf
+INP_wf    ${iwf}                        ! (0)read wf from fort.10; (1) read from saved file; (2) from a random wf
 PNP_phi   1                             !  1 (HFB) or 7 (VAPHFB)
 ........................................ constraint quantities
 kick_step 0.0
@@ -42,3 +79,30 @@ P00_1m1   0 0.0d0                      ! 16  P_TMT_JMJ ! T=0, L=0, J=S=1, MJ=-1
 P00_1p1   0 0.0d0                      ! 17  P_TMT_JMJ ! T=0, L=0, J=S=1, MJ=+1
 Q40t      0 0.d0                       ! 3: Q40t
 Q40m      0 0.d0                       ! 3: Q40m
+EOF
+
+cat <<EOF > betgam.dat
+ ............
+ max
+ bet     gam    P00(T=0,J=1)  crank.freq
+ ----------------------------------------
+ 1
+ 0.0      0      0          0.0
+-0.3      0      0          0.0
+-0.2      0      0          0.0
+-0.1      0      0          0.0
+ 0.0      0      0          0.0
+ 0.1      0      0          0.0
+ 0.2      0      0          0.0
+ 0.3      0      0          0.0
+ 0.4      0      0          0.0
+EOF
+
+#.... copy matrix elements from EOM-IMSRG calculation
+cd ${PATH_WORK}
+
+./HFB 
+
+#cat fort.9* >>E_beta_gam.dat
+#rm fort.*
+#mv E_beta_gam.dat ../../data/Ti/Ti48_EHFB.dat
