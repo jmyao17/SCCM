@@ -9,8 +9,7 @@
 </figure>
 
 # SCCM
-Symmetry-Conserving-Configuration-Mixing Method for Nuclear Collective Excitations
-
+Symmetry-Conserving-Configuration-Mixing Method for Nuclear Collective Excitations written in Fortran90.
 This repository includes:
 * source codes for HFB, Projection on angular momentum and particle numbers and configuration mixing calcualtions
 * some popular shell-model interactions
@@ -31,6 +30,9 @@ More details about the features and variables of the code will be published some
 
 To be implemented ...
 * lib directory is not included yet
+
+
+Credits: * Most of this code was written by Jiangming Yao, who benefitted greatly from the codes of Tomas Rodriguez. 
 
 MIT License
 
